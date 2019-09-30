@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+		<script src="main.js"></script>
+		<title>rxjs</title>
+		<style>
+			.print-area {
+				display: flex;
+				flex-direction: column;
+				background: #414344;
+				border-radius: 10px;
+				min-height: 80px;
+			}
+			.printedVal {
+				font-size: 22px;
+				font-family: monospace;
+				padding: 6px 12px;
+				color: #ceff0ce0;
+			}
+			.printedVal::before {
+				content: '>>  ';
+				color: chartreuse;
+			}
+			a.link:hover {
+				font-size: 26px;
+			}
+			.link {
+				color: white;
+				cursor: pointer;
+				padding: 10px;
+				background: #af0038;
+				margin: 10px;
+				border-radius: 3px;
+				font-size: 25px;
+				display: block;
+				text-align: center;
+				box-sizing: border-box;
+				position: fixed;
+				top: 5px;
+				right: 5px;
+			}
+		</style>
+	</head>
+	<body>
+		<a class="link" onclick="clearScreen()">Clear Screen</a>
+		<div class="print-area"></div>
+	</body>
+</html>
