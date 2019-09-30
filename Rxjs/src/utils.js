@@ -5,7 +5,8 @@ export function printOnScreen(val) {
     document.querySelector('.print-area').append(elem);
 }
 
-export function clearScreen() {
+export function clearScreen(e) {
+    e.stopPropagation();
     document.querySelector('.print-area').innerHTML = "";
 }
 window.clearScreen = clearScreen;

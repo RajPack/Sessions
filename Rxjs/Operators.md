@@ -1,11 +1,15 @@
 # Commonly used rxjs operators
 
 - from
+- interval
 - fromEvent
-- scan
-- pipe
-- filter
 - delay
-- debounceTime
+- pipe
+- scan
+- filter
 - map
--
+- switchMap
+- debounceTime
+
+
+more to come........
