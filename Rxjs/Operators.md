@@ -10,6 +10,7 @@
 - map
 - switchMap
 - debounceTime
+- tap
 
 
 more to come........
