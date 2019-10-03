@@ -76,4 +76,4 @@ function lesson4 () {
 
 
 
-executeWhenReady(lesson4);
+executeWhenReady();

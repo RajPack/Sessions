@@ -16,5 +16,8 @@ window.clearScreen = clearScreen;
 
 export const executionQueue = [];
 export function executeWhenReady(fn) {
+    if(!fn) {
+        return;
+    }
     executionQueue.push(fn);
 }
