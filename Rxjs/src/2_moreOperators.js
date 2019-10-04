@@ -109,4 +109,4 @@ function lesson6() {
     ).subscribe(v => printOnScreen(v));
 }
 
-executeWhenReady(lesson6);
+executeWhenReady();
