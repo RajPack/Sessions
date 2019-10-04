@@ -24,7 +24,14 @@
 20. forkJoin
 21. concatMap
 22. mergeMap
+23. timer
+
+24. multicast
+25. refCount
+26. share
+27. publish
 
 
 
-more to come........
+Few other operators you can check out:
+every, pluck, skip, skipWhile, skipUntil, throttle, throttleTime

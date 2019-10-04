@@ -62,7 +62,7 @@ function lesson3 () {
 }
 
 function lesson4 () {
-    // concat Map
+    // concat Map - for each outer observable value - it subscribes to inner observable and waits for inner observable to complete and only then emits the second value from the outer observable
     let names$ =  new Observable((observer) => {
         setTimeout(() => observer.next('john'), 500);
         setTimeout(() => observer.next('james'), 600);
@@ -71,18 +71,18 @@ function lesson4 () {
     });
     let dept$ = new Observable((observer) => {
         setTimeout(() => observer.next('sales'), 0);
-        setTimeout(() => observer.next('IT'), 0);
+        setTimeout(() => observer.next('IT'), 1000);
         setTimeout(() => observer.next('Management'), 1500);
         setTimeout(() => observer.complete(), 2000);
     });
 
     names$.pipe(
-        concatMap(name => dept$.pipe(map(dept => name +'-'+dept)))
+        concatMap(name => dept$.pipe(map(dept => name + ' - ' +dept)))
     ).subscribe(v => printOnScreen(v));
 
 }
 function lesson5 () {
-    // merge Map
+    // merge Map - keeps all the subscription alive until complete and emits whenever any value is emitted from inner and outer observables
     let names$ =  new Observable((observer) => {
         setTimeout(() => observer.next('john'), 500);
         setTimeout(() => observer.next('james'), 600);
@@ -91,20 +91,40 @@ function lesson5 () {
     });
     let dept$ = new Observable((observer) => {
         setTimeout(() => observer.next('sales'), 0);
-        setTimeout(() => observer.next('IT'), 0);
+        setTimeout(() => observer.next('IT'), 100);
         setTimeout(() => observer.next('Management'), 1500);
         setTimeout(() => observer.complete(), 2000);
     });
 
     names$.pipe(
-        mergeMap(name => dept$.pipe(map(dept => name +'-'+dept)))
+        mergeMap(name => dept$.pipe(map(dept => name +' - '+dept)))
+    ).subscribe(v => printOnScreen(v))
+}
+
+function lesson5_1 () {
+    // Swich Map - it automatically unsubscribes the previous inner observable subscription when a new value in the outer observable is emitted.
+    let names$ =  new Observable((observer) => {
+        setTimeout(() => observer.next('john'), 500);
+        setTimeout(() => observer.next('james'), 800);
+        setTimeout(() => observer.next('peter'), 1000);
+        setTimeout(() => observer.complete(), 1000);
+    });
+    let dept$ = new Observable((observer) => {
+        setTimeout(() => observer.next('sales'), 0);
+        setTimeout(() => observer.next('IT'), 100);
+        setTimeout(() => observer.next('Management'), 1500);
+        setTimeout(() => observer.complete(), 2000);
+    });
+
+    names$.pipe(
+        switchMap(name => dept$.pipe(map(dept => name +' - '+dept)))
     ).subscribe(v => printOnScreen(v))
 }
 
 function lesson6() {
     // introducing delay in predefined list of elements.
     let items$ = of(1,2,4,5);
-    zip(items$, timer(0, 1000)).pipe(
+    zip(items$, timer(0, 2000)).pipe(
         map(arr => arr[0])
     ).subscribe(v => printOnScreen(v));
 }
